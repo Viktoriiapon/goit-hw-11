@@ -1,33 +1,32 @@
-/* empty css                      */import{i as c}from"./assets/vendor-bee2f3af.js";(function(){const i=document.createElement("link").relList;if(i&&i.supports&&i.supports("modulepreload"))return;for(const e of document.querySelectorAll('link[rel="modulepreload"]'))n(e);new MutationObserver(e=>{for(const t of e)if(t.type==="childList")for(const r of t.addedNodes)r.tagName==="LINK"&&r.rel==="modulepreload"&&n(r)}).observe(document,{childList:!0,subtree:!0});function o(e){const t={};return e.integrity&&(t.integrity=e.integrity),e.referrerPolicy&&(t.referrerPolicy=e.referrerPolicy),e.crossOrigin==="use-credentials"?t.credentials="include":e.crossOrigin==="anonymous"?t.credentials="omit":t.credentials="same-origin",t}function n(e){if(e.ep)return;e.ep=!0;const t=o(e);fetch(e.href,t)}})();const a={formEl:document.querySelector(".js-search-form"),infoEl:document.querySelector(".js-list-img"),loaderEl:document.querySelector(".loader")};a.formEl.addEventListener("submit",m);function m(s){s.preventDefault();const i=s.target.elements.query.value;if(!i){c.warning({position:"topRight",message:"Please enter a search query."});return}f(i).then(o=>{d(o)})}function f(s){const i="https://pixabay.com/",o="/api/",n=`?key=42187150-1e170edc08d41224404163b7f&q=${s}&image_type=photo&orientation=horizontal&safesearch=true`,e=i+o+n;return fetch(e).then(t=>t.json())}function u(s){const{webformatURL:i,largeImageURL:o,tags:n,likes:e,views:t,comments:r,downloads:l}=s;return`<div class="image js-image">
+/* empty css                      */import{i as l,S as m}from"./assets/vendor-5b791d57.js";(function(){const s=document.createElement("link").relList;if(s&&s.supports&&s.supports("modulepreload"))return;for(const e of document.querySelectorAll('link[rel="modulepreload"]'))a(e);new MutationObserver(e=>{for(const t of e)if(t.type==="childList")for(const n of t.addedNodes)n.tagName==="LINK"&&n.rel==="modulepreload"&&a(n)}).observe(document,{childList:!0,subtree:!0});function i(e){const t={};return e.integrity&&(t.integrity=e.integrity),e.referrerPolicy&&(t.referrerPolicy=e.referrerPolicy),e.crossOrigin==="use-credentials"?t.credentials="include":e.crossOrigin==="anonymous"?t.credentials="omit":t.credentials="same-origin",t}function a(e){if(e.ep)return;e.ep=!0;const t=i(e);fetch(e.href,t)}})();const r={formEl:document.querySelector(".js-search-form"),infoEl:document.querySelector(".js-list-img"),loaderEl:document.querySelector(".loader")};r.formEl.addEventListener("submit",f);function f(o){o.preventDefault(),r.infoEl.innerHTML="",r.loaderEl.classList.add("show");const s=o.target.elements.query.value;if(!s){l.warning({position:"topRight",message:"Please enter a search query."}),r.loaderEl.classList.remove("show");return}u(s).then(i=>{r.loaderEl.classList.remove("show"),i.hits.length===0?l.error({position:"topRight",messageSize:"50",message:"Sorry, there are no images matching your search query. Please try again!"}):(g(i),o.target.elements.query.value="")}).catch(i=>{console.error("Error fetching images:",i),l.error({position:"topRight",messageSize:"50",message:"Failed to fetch images. Please try again later."}),r.loaderEl.classList.remove("show")})}function u(o){const s="https://pixabay.com/",i="/api/",a=`?key=42187150-1e170edc08d41224404163b7f&q=${o}&image_type=photo&orientation=horizontal&safesearch=true`,e=s+i+a;return fetch(e).then(t=>t.json())}function d(o){const{webformatURL:s,largeImageURL:i,tags:a,likes:e,views:t,comments:n,downloads:c}=o;return`<div class="image js-image">
     <div class="image-container">
-
-    <a class="gallery-link" href="${o}">
-    <img
-    src="${i}"
-    alt="${n}"
-    class="image js-image"
-  />
-  </a>
+      <a class="gallery-link" href="${i}">
+        <img
+          src="${s}"
+          alt="${a}"
+          class="image js-image"
+        />
+      </a>
     </div>
     <div class="image-body">
       <ul class="info">
-    <li class ="info-item">
-      <b class="info-item-title">Likes</b>
+        <li class="info-item">
+          <b class="info-item-title">Likes</b>
           <span class="info-item-value">${e}</span>
-          </li>
-          <li class ="info-item">
-      <b class="info-item-title">Views</b>
+        </li>
+        <li class="info-item">
+          <b class="info-item-title">Views</b>
           <span class="info-item-value">${t}</span>
-          </li>
-          <li class ="info-item">
-      <b class="info-item-title">Comments</b>
-          <span class="info-item-value">${r}</span>
-          </li>
-          <li class ="info-item">
-      <b class="info-item-title">Downloads</b>
-          <span class="info-item-value">${l}</span>
-          </li>
+        </li>
+        <li class="info-item">
+          <b class="info-item-title">Comments</b>
+          <span class="info-item-value">${n}</span>
+        </li>
+        <li class="info-item">
+          <b class="info-item-title">Downloads</b>
+          <span class="info-item-value">${c}</span>
+        </li>
       </ul>
     </div>
-  </div>`}function d({hits:s}){const i=s.map(u).join("");a.infoEl.insertAdjacentHTML("beforeend",i),console.log(i)}
+  </div>`}function g({hits:o}){const s=o.map(d).join("");r.infoEl.insertAdjacentHTML("beforeend",s),new m(".gallery-link",{captionDelay:250,captionsData:"alt"}).refresh()}
 //# sourceMappingURL=commonHelpers2.js.map
